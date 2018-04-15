@@ -1,0 +1,22 @@
+{
+	"menu": {
+		"home": "Início",
+		"about": "Sobre",
+		"contact": "Contato"
+	},
+	"contact": {
+		"contact_form": {
+			"form": "Mande-nos uma mensagem",
+			"first_name": "Primeiro nome",
+			"last_name": "Sobrenome",
+			"country": "De onde você é?",
+			"email": "E-mail",
+			"send": "Enviar mensagem",
+			"form_help": "Suas informações jamais serão compartilhadas com terceiros.",
+			"receive_newsletter": "Receber nossa newsletter",
+			"message": "Mensagem",
+			"success_message": "Mensagem enviada com sucesso.",
+			"error_message": "Os campos destacados precisam ser revistos."
+		}
+	}
+}

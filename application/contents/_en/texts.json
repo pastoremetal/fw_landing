@@ -1,0 +1,22 @@
+{
+	"menu": {
+		"home": "Beginning",
+		"about": "About",
+		"contact": "Contact"
+	},
+	"contact": {
+		"contact_form": {
+			"form": "Send us a message",
+			"first_name": "First name",
+			"last_name": "Last Name",
+			"country": "Where are you from?",
+			"email": "E-mail",
+			"send": "Send message",
+			"form_help": "Your information will never be shared with third parties.",
+			"receive_newsletter": "Receive our newsletter",
+			"message": "Message",
+			"success_message": "Message sent successfully.",
+			"error_message": "Featured fields need to be reviewed."			
+		}
+	}
+}
