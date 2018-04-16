@@ -169,7 +169,11 @@ $texts = $config->snippeter->getTexts();
 						error = true;
 					}
 				});
-				console.log(("#contact_form").serialize());return false;
+				
+				let recaptcha = $("#contact_form").find("[name='g-recaptcha-response']").val();
+				if(recaptcha==undefined ||recaptcha=='' || recaptcha==null)
+					error = true;
+				
 				if(error===null){
 					$("#contact_submit").hide();
 					$("#contact_progress").show();
