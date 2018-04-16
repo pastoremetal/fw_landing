@@ -24,10 +24,24 @@ class contactSend{
 			$_POST['contact_firstname']=='' || 
 			$_POST['contact_country']=='' ||
 			$_POST['contact_message']=='' |
-			$_POST['contact_email']==''){
+			$_POST['contact_email']=='' ||
+			$_POST['g-recaptcha-response']==''){
 				echo json_encode(array("SUCCESS"=>false));
 				exit;
-			}
+		}
+		
+		$params=['secret'=>'6LezYlMUAAAAAP2VKKv5cf1vcpWVdcE4gmfCN2PQ', 'response '=>$_POST['g-recaptcha-response'])
+		$defaults = array(
+			CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
+			CURLOPT_POST => true,
+			CURLOPT_POSTFIELDS => $params,
+			CURLOPT_RETURNTRANSFER => true
+		);
+		$ch = curl_init();
+		curl_setopt_array($ch, $defaults);
+		$ret = json_decode(curl_exec($ch), true);
+		if($ret['success']==false)
+			echo json_encode(array("SUCCESS"=>false));
 		
 		try {
 			//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
