@@ -177,7 +177,23 @@ $texts = $config->snippeter->getTexts();
 				if(error===null){
 					$("#contact_submit").hide();
 					$("#contact_progress").show();
-					$.post("/application/contactSend.php?f=sendMsg", $("#contact_form").serialize(), function(data) {
+					$.ajax({
+						type: "POST",
+						url: "/application/contactSend.php?f=sendMsg",
+						data: $("#contact_form").serialize(),
+						success: function(data){
+							console.log(data.SUCCESS);
+							if(data.SUCCESS==true){
+								$("#contact_success").show();
+								$("#contact_progress").hide();
+							}else{
+								$("#contact_submit, #contact_error").show();
+								$("#contact_progress").hide();
+							}
+						},
+						dataType: "json"
+					});
+					/*$.post("/application/contactSend.php?f=sendMsg", $("#contact_form").serialize(), function(data) {
 						console.log(data.SUCCESS);
 						if(data.SUCCESS==true){
 							$("#contact_success").show();
@@ -186,7 +202,7 @@ $texts = $config->snippeter->getTexts();
 							$("#contact_submit, #contact_error").show();
 							$("#contact_progress").hide();
 						}
-					}, "json");
+					}, "json");*/
 				}else{
 					$("#contact_submit, #contact_error").show();
 					$("#contact_progress").hide();
