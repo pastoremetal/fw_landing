@@ -175,10 +175,10 @@ $texts = $config->snippeter->getTexts();
 					$("#contact_progress").show();
 					$.post("/application/contactSend.php?f=sendMsg", $("#contact_form").serialize(), function(data) {
 						console.log(data.SUCCESS);
-						if(data.SUCCESS==true)
+						if(data.SUCCESS==true){
 							$("#contact_success").show();
-						$("#contact_progress").hide();
-						else{
+							$("#contact_progress").hide();
+						}else{
 							$("#contact_submit, #contact_error").show();
 							$("#contact_progress").hide();
 						}
