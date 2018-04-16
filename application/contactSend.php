@@ -30,7 +30,7 @@ class contactSend{
 				exit;
 		}
 		
-		$params=['secret'=>'6LezYlMUAAAAAP2VKKv5cf1vcpWVdcE4gmfCN2PQ', 'response '=>$_POST['g-recaptcha-response'])
+		$params = array('secret'=>'6LezYlMUAAAAAP2VKKv5cf1vcpWVdcE4gmfCN2PQ', 'response '=>$_POST['g-recaptcha-response']);
 		$defaults = array(
 			CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
 			CURLOPT_POST => true,
