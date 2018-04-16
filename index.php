@@ -126,18 +126,24 @@ $texts = $config->snippeter->getTexts();
 							</div>
 							<div class="form-group col-12 col-xs-12">
 								<textarea class="form-control required" name="contact_message" id="contact_message" placeholder="<?=$texts['contact']['contact_form']['message']?>"></textarea>
-								
 							</div>
-							<div class="form-group col col-xs-12">
+							<div class="form-group col-6">
 								<div class="form-check">
 									<input class="form-check-input" type="checkbox" name="contact_newsletter" id="contact_newsletter" value="1" checked="checked">
 									<label class="form-check-label" for="contact_newsletter"><?=$texts['contact']['contact_form']['receive_newsletter']?></label>
 								</div>
 							</div>
-							<div class="form-group col col-xs-12 text-right">
-								<button type="submit" class="btn btn-primary"><?=$texts['contact']['contact_form']['send']?></button>
+							<div class="form-group col-6 text-right">
+								<div class="g-recaptcha" style="display: inline-block" data-sitekey="6LezYlMUAAAAAL67TV34-fARTG-yenvDpSyGje_D"></div>
 							</div>
-							<div class="g-recaptcha" data-sitekey="6LezYlMUAAAAAL67TV34-fARTG-yenvDpSyGje_D"></div>
+							<div class="form-group col-12 text-right">
+								<button type="submit" class="btn btn-primary" id="contact_submit"><?=$texts['contact']['contact_form']['send']?></button>
+							</div>
+							<div class="form-group col-12 text-center">
+								<div class="progress" id="contact_progress" style="display: none">
+									<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+								</div>
+							</div<
 						</form>
 					</div>
 				</div>
@@ -163,16 +169,25 @@ $texts = $config->snippeter->getTexts();
 						error = true;
 					}
 				});
+				console.log(("#contact_form").serialize());return false;
+				if(error===null){
+					$("#contact_submit").hide();
+					$("#contact_progress").show();
+					$.post("/application/contactSend.php?f=sendMsg", $("#contact_form").serialize(), function(data) {
+						console.log(data.SUCCESS);
+						if(data.SUCCESS==true)
+							$("#contact_success").show();
+						$("#contact_progress").hide();
+						else{
+							$("#contact_submit, #contact_error").show();
+							$("#contact_progress").hide();
+						}
+					}, "json");
+				}else{
+					$("#contact_submit, #contact_error").show();
+					$("#contact_progress").hide();
+				}
 				
-				if(error===null)
-					$.post("/application/contactSend.php", $("#contact_form").serialize(), function(data) {
-						console.log(data);
-					});
-					
-				if(error===null)
-					$("#contact_success").show();
-				else
-					$("#contact_error").show();
 				return false;
 			}
 		
