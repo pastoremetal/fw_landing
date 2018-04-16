@@ -105,6 +105,7 @@ $texts = $config->snippeter->getTexts();
 					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
 					<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 						<form class="row" style="padding: 30px 0" name="contact_form" id="contact_form" onsubmit="javascript: return sendMessage()" autocomplete="off">
+							<input type="hidden" name="language" value="<?=$config->getLanguage()['ab']?>" />
 							<div id="contact_success" class="alert alert-success w-100" style="display: none" role="alert"><?=$texts['contact']['contact_form']['success_message']?></div>
 							<div id="contact_error" class="alert alert-danger w-100" style="display: none" role="alert"><?=$texts['contact']['contact_form']['error_message']?></div>
 							

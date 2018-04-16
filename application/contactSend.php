@@ -5,10 +5,10 @@ use PHPMailer\PHPMailer\Exception;
 require '../libs/PHPMailer-master/src/Exception.php';
 require '../libs/PHPMailer-master/src/PHPMailer.php';
 require '../libs/PHPMailer-master/src/SMTP.php';
-
+require 'database.php';
 class contactSend{
 	public function __construct(){
-		
+		$db = new database();
 	}
 	
 	public function sendMessage(){
@@ -44,7 +44,7 @@ class contactSend{
 			echo json_encode(array("SUCCESS"=>false));exit;
 		}
 		
-		try {
+		/*try {
 			//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
 			$mail->CharSet = 'UTF-8';
 			$mail->SMTPDebug = 0;
@@ -77,7 +77,7 @@ class contactSend{
 			echo json_encode(array("SUCCESS"=>true));
 		} catch (Exception $e) {
 			echo json_encode(array("SUCCESS"=>false));
-		}
+		}*/
 	}
 }
 

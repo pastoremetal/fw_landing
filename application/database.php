@@ -3,7 +3,7 @@ class database{
 	private $db_host = "localhost";
 	private $db_user = "root";
 	private $db_pass = "";
-	private $db_name = "fw_pre";
+	private $db_name = "falling_worlds_landing";
 	private $con = null;
 	
 	public function __construct(){
