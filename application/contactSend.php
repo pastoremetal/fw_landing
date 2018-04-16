@@ -30,7 +30,7 @@ class contactSend{
 				exit;
 		}
 		
-		$params = array('secret'=>'6LezYlMUAAAAAP2VKKv5cf1vcpWVdcE4gmfCN2PQ', 'response '=>$_POST['g-recaptcha-response']);
+		$params = array('secret'=>'6LezYlMUAAAAAP2VKKv5cf1vcpWVdcE4gmfCN2PQ', 'response'=>$_POST['g-recaptcha-response']);
 		$defaults = array(
 			CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
 			CURLOPT_POST => true,
@@ -40,8 +40,9 @@ class contactSend{
 		$ch = curl_init();
 		curl_setopt_array($ch, $defaults);
 		$ret = json_decode(curl_exec($ch), true);
-		if($ret['success']==false)
-			echo json_encode(array("SUCCESS"=>false));
+		if($ret['success']==false){
+			echo json_encode(array("SUCCESS"=>false));exit;
+		}
 		
 		try {
 			//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
