@@ -2,7 +2,35 @@
 	"menu": {
 		"home": "Início",
 		"about": "Sobre",
-		"contact": "Contato"
+		"contact": "Contato",
+		"signin": "Entrar",
+		"register": "Registre-se"
+	},
+	"about": {
+		"about": "Sobre",
+		"welcometext": "Após o despertar dos \"antigos\", o mundo dos humanos chega ao seu fim, restando poucos sobreviventes para lutar por suas próprias vidas, alguns se agrupam para se proteger, outros vagam como sombras pela terra, outros preferem se aliar ao inimigo e tem aqueles que escolheram ser a doença para aqueles que restam.<br/>Nada mais importa, \"ELES\" acordaram.<br/>\"Não está morto o que eternamente jaz inanimado, e em estranhas realidades até a morte pode morrer\"."
+	},
+	"register": {
+		"register": "Cadastre-se",
+		"invitetext": "Dentro de pouco tempo Falling Worlds será lançado em versão Beta aberta para todos.<br/>Faça o seu pré-cadastro e mantenha-se informado(a) de todas as novidades.",
+		"register_form": {
+			"first_name": "Primeiro nome",
+			"last_name": "Sobrenome",
+			"country": "De onde você é?",
+			"email": "E-mail",
+			"gender": {
+				"gender": "Gênero",
+				"male": "Masculino",
+				"female": "Feminino"
+			},
+			"user": "Nome de usuário",
+			"password": "Senha",
+			"send": "Salvar",
+			"form_help": "Suas informações jamais serão compartilhadas com terceiros.",
+			"receive_newsletter": "Receber nossa newsletter",
+			"success_message": "Cadastro feito com sucesso.",
+			"error_message": "Os campos destacados precisam ser revistos."
+		}
 	},
 	"contact": {
 		"contact_form": {
@@ -18,5 +46,18 @@
 			"success_message": "Mensagem enviada com sucesso.",
 			"error_message": "Os campos destacados precisam ser revistos."
 		}
+	},
+	"form": {
+		"scl_description": "Marque na escala abaixo o quanto você concorda com essa afirmação, onde 0 significa de descorda totalmente e 8 que concorda totalmente.",
+		"error_title": "Alguns campos estão em branco!",
+		"error_description": "Por favor preencha os campos destacados e envie o formulário novamente.",
+		"error_ukn_title": "Algo de errado ocorreu.",
+		"error_ukn_description": "A equipe de desenvolvimento foi contatada, aguarde a resposta e volte mais tarde.",
+		"prev": "Voltar",
+		"next": "Avançar"
+	},
+	"login": {
+		"user": "Usuário",
+		"password": "Senha"
 	}
 }

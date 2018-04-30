@@ -2,7 +2,36 @@
 	"menu": {
 		"home": "Beginning",
 		"about": "About",
-		"contact": "Contact"
+		"contact": "Contact",
+		"signin": "Sign in",
+		"register": "Register"
+
+	},
+	"about": {
+		"about": "About",
+		"welcometext": "After the awakening of the \"old ones\", the human world comes to an end, few survivors remain to fight for their own lives, some group to protect themselves, others wander like shadows across the land, others prefer to ally themselves with the enemy, and there are those who choose to be the disease to those who remain. <br/> Nothing else matters, \"THEY\" woke up.<br/>\"That is not dead which can eternal lie, And with strange aeons even death may die.\"."
+	},
+	"register": {
+		"register": "Register Yourself",
+		"invitetext": "Falling Worlds will soon be released as an open Beta for every one. <br/> Pre-register and keep up to date with all news.",
+		"register_form": {
+			"first_name": "First name",
+			"last_name": "Last Name",
+			"country": "Where are you from?",
+			"email": "E-mail",
+			"gender": {
+				"gender": "Gender",
+				"male": "Male",
+				"female": "Female"
+			},
+			"user": "Username",
+			"password": "Password",
+			"send": "Save",
+			"form_help": "Your information will never be shared with third parties.",
+			"receive_newsletter": "Receive our newsletter",
+			"success_message": "Registration done successfully.",
+			"error_message": "Featured fields need to be reviewed."
+		}
 	},
 	"contact": {
 		"contact_form": {
@@ -16,7 +45,20 @@
 			"receive_newsletter": "Receive our newsletter",
 			"message": "Message",
 			"success_message": "Message sent successfully.",
-			"error_message": "Featured fields need to be reviewed."			
+			"error_message": "Featured fields need to be reviewed."
 		}
+	},
+	"form": {
+		"scl_description": "",
+		"error_title": "Some fields are blank!",
+		"error_description": "Please fill the highlited fields and submit the form again.",
+		"error_ukn_title": "Something went wrong.",
+		"error_ukn_description": "The development team was contacted, please wait for the response and come back later.",
+		"prev": "Previous",
+		"next": "Next"
+	},
+	"login": {
+		"user": "Username",
+		"password": "Password"
 	}
 }

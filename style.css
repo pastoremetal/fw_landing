@@ -33,4 +33,88 @@ body{background: #000;}
 	.fullscreen-bg__video {display: none;}
 }
 
-.content{padding: 30px 0}
+.nav-pills .nav-link {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-moz-border-radius-topleft: 8px;
+	-moz-border-radius-bottomleft: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	-moz-border-radius-topright: 0;
+	-moz-border-radius-bottomright: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	background: rgba(30, 20, 20, 0.8);
+	font-family: '1942 report';
+	color: #DDDDDD;
+	font-weight: bold;
+	font-size: 18px;
+	border-bottom: 1px solid #888888;
+}
+.nav-pills .nav-link:hover{
+	border-bottom: 2px solid #FFFFFF;
+	background: rgba(60, 40, 40, 0.8);
+}
+.nav-pills .nav-link.active{background: rgba(60, 10, 10, 0.8);}
+
+.content > div:nth-child(2){
+	background: rgba(60, 10, 10, 0.8);
+	/*background-image: url("application/contents/images/coudy-brown-leather-texture-wallpaper-fabric-stock-image-design-1.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;*/
+	-webkit-border-top-right-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	-moz-border-radius-topright: 8px;
+	-moz-border-radius-bottomright: 8px;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	color: #FFFFFF;
+}
+
+.text-muted{color: #FFFFFF !important;}
+
+.question-group{
+	height: auto;
+	min-height: 200px;
+	padding: 0;
+	margin-top: 20px;
+}
+.question-group > .question{
+	background: rgba(255, 255, 255, 0.3);
+	margin-bottom: 5px;
+	padding: 10px 15px;
+}
+.question-group > .question > h6.title{
+	color: #222222;
+	font-weight: bold;
+}
+
+.question-group > .question .form-check{
+	margin: 0 !important;
+	color: #EEE;
+}
+
+.question-group > .question table.scale{
+	width: 100%;
+	border-width: 0;
+	margin-top: 15px;
+}
+
+.question-group > .question table.scale td,
+.question-group > .question table.scale th{
+	border-color: #222;
+	border-width: 0;
+	text-align: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background: rgba(200, 200, 200, 0.4);
+}
+.question-group > .question table.scale th{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.question-group > .question table.scale td:nth-child(even),
+.question-group > .question table.scale th:nth-child(even){
+	background: rgba(120, 100, 80, 0.4);
+}

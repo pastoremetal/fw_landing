@@ -1,19 +1,23 @@
 <?php
 class database{
-	private $db_host = "localhost";
+	private $db_host = "127.0.0.1";
 	private $db_user = "root";
 	private $db_pass = "";
 	private $db_name = "falling_worlds_landing";
 	private $con = null;
-	
+
 	public function __construct(){
 		try{
-			$this->con = new PDO('dblib:host={$this->db_host};dbname={$this->db_name};charset=UTF-8', $this->db_user, $this->db_pass);
+			$this->con = new PDO("mysql:host={$this->db_host};dbname={$this->db_name};charset=UTF8", $this->db_user, $this->db_pass);
+			$this->con ->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
+			$this->con ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}catch(Exception $e){
-			return $e;
+			print_r($e);
 		}
 		return true;
 	}
+
+	public function getCon(){return $this->con;}
 }
 
 ?>
