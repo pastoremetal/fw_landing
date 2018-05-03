@@ -34,14 +34,14 @@
 																	form_question b ON a.question=b.id
 																WHERE
 																	a.questionnaire=:id");
-				$qrU->bindParam(':user', $_SESSION['USER']['USER_ID']);
+				//$qrU->bindParam(':user', $_SESSION['USER']['USER_ID']);
 				$qrU->bindParam(':id', $_POST['questionnaire_id']);
 				$qrU->execute();
 				$qrR = $qrU->fetchAll();
 
 				$this->database->getCon()->beginTransaction();
 				$qrQI = $this->database->getCon()->prepare("INSERT INTO form_usr_questionnaire (user, questionnaire) VALUES (:user, :questionnaire)");
-				//$qrQI->bindParam(':user', $_SESSION['USER']['USER_ID']);
+				$qrQI->bindParam(':user', $_SESSION['USER']['USER_ID']);
 				$qrQI->bindParam(':questionnaire', $_POST['questionnaire_id']);
 				$qrQI->execute();
 				$uQId = $this->database->getCon()->lastInsertId();
@@ -232,10 +232,10 @@
 																				<label class='form-check-label' for='question[{$question[0]->question_id}][{$ans['id']}]'>{$ans['answer_text']}</label>
 																			</div>";
 															}
-														elseif($question[0]->type === "SCL"){
+														elseif($question[0]->type == "SCL"){
 															$sh = $sb = "";
 															for($i=0; $i<$question[0]->scale_lengt; $i++){
-																$ck = ($question[0]->value==$i)?"checked='checked'":"";
+																$ck = ($question[0]->value !== null && $question[0]->value==$i)?"checked='checked'":"";
 																$sh .= "<th><label class='w-100 form-check-label' for='question[{$question[0]->question_id}][{$i}]'>{$i}</label></th>";
 																$sb .= "<td><input class='' type='radio' {$ck} data-group='{$g}' name='question[{$question[0]->question_id}]' id='question[{$question[0]->question_id}][{$i}]' value='{$i}' /></td>";
 															}
