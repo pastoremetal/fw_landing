@@ -29,23 +29,26 @@ body{background: #000;}
 }
 
 @media (max-width: 767px) {
-	.fullscreen-bg {background: url('application/contents/images/videoframe.jpg') center center / cover no-repeat;}
+	.fullscreen-bg {background: url('application/contents/images/back.jpg') center center / cover no-repeat;}
 	.fullscreen-bg__video {display: none;}
+	.nav-pills .nav-link {
+		-webkit-border-top-left-radius: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-moz-border-radius-topleft: 8px;
+		-moz-border-radius-bottomleft: 8px;
+		border-top-left-radius: 8px;
+		border-bottom-left-radius: 8px;
+		-webkit-border-top-right-radius: 0;
+		-webkit-border-bottom-right-radius: 0;
+		-moz-border-radius-topright: 0;
+		-moz-border-radius-bottomright: 0;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	.md-text-right{text-align: right}
 }
 
-.nav-pills .nav-link {
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-bottom-left-radius: 8px;
-	-moz-border-radius-topleft: 8px;
-	-moz-border-radius-bottomleft: 8px;
-	border-top-left-radius: 8px;
-	border-bottom-left-radius: 8px;
-	-webkit-border-top-right-radius: 0;
-	-webkit-border-bottom-right-radius: 0;
-	-moz-border-radius-topright: 0;
-	-moz-border-radius-bottomright: 0;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
+.nav-pills .nav-link {	
 	background: rgba(30, 20, 20, 0.8);
 	font-family: '1942 report';
 	color: #DDDDDD;

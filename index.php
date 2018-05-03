@@ -38,7 +38,7 @@ $config = new config();
 					</li>
 				</ul>
 			</div>-->
-			<div class="col text-left">
+			<div class="col-xs-12 col-md-6 text-left">
 				<a href="/pt/<?=$config->getController()?>">
 					<button class="btn btn-sm btn-info" style="font-weight: bold" type="button">PT</button>
 				</a>
@@ -46,7 +46,7 @@ $config = new config();
 					<button class="btn btn-sm btn-info" style="font-weight: bold" type="button">EN</button>
 				</a>
 			</div>
-			<div class="col text-right">
+			<div class="col-xs-12 col-md-6 md-text-right">
 				<?php
 					if(!isset($_SESSION['USER']['LOGED']) || $_SESSION['USER']['LOGED']===false){?>
 						<a href="/<?=$config->getLanguage()['ab']?>/login">
