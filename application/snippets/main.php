@@ -142,7 +142,7 @@
 						$("#register_success").show();
 						$("#register_progress").hide();
 						window.setTimeout(function(){
-							window.location.href = "/<?=$config->getLanguage()['ab']?>/login";
+							window.location.href = "/<?=$this->language['ab']?>/login";
 						, 1000);
 					}else{
 						$("#register_submit, #register_error").show();
