@@ -46,7 +46,7 @@ $config = new config();
 					<button class="btn btn-sm btn-info col-4 col-md-2" style="font-weight: bold" type="button">EN</button>
 				</a>
 			</div>
-			<div class="col-12 col-md-6 md-text-right md-mg-top-10">
+			<div class="col-12 col-md-6 md-text-right xs-mg-top-10">
 				<?php
 					if(!isset($_SESSION['USER']['LOGED']) || $_SESSION['USER']['LOGED']===false){?>
 						<a href="/<?=$config->getLanguage()['ab']?>/login">
