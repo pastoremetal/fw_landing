@@ -28,6 +28,9 @@ body{background: #000;}
 	.fullscreen-bg__video {width: 300%; left: -100%;}
 }
 
+@media (min-width: 768px) { 
+	.md-text-right{text-align: right}
+}
 @media (max-width: 767px) {
 	.fullscreen-bg {background: url('application/contents/images/back.jpg') center center / cover no-repeat;}
 	.fullscreen-bg__video {display: none;}
@@ -44,8 +47,7 @@ body{background: #000;}
 		-moz-border-radius-bottomright: 0;
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
-	}
-	.md-text-right{text-align: right}
+	}	
 }
 
 .nav-pills .nav-link {	
