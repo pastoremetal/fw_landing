@@ -141,9 +141,9 @@
 					if(data.SUCCESS==true){
 						$("#register_success").show();
 						$("#register_progress").hide();
-						window.setTimeout(function(){
+						/*window.setTimeout(function(){
 							window.location.href = "/<?=$this->language['ab']?>/login";
-						}, 1000);
+						}, 1000);*/
 					}else{
 						$("#register_submit, #register_error").show();
 						$("#register_progress").hide();
