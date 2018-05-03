@@ -232,7 +232,7 @@
 																				<label class='form-check-label' for='question[{$question[0]->question_id}][{$ans['id']}]'>{$ans['answer_text']}</label>
 																			</div>";
 															}
-														elseif($question[0]->type == "SCL"){
+														elseif($question[0]->type === "SCL"){
 															$sh = $sb = "";
 															for($i=0; $i<$question[0]->scale_lengt; $i++){
 																$ck = ($question[0]->value==$i)?"checked='checked'":"";
