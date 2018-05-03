@@ -2,7 +2,7 @@
 class database{
 	private $db_host = "127.0.0.1";
 	private $db_user = "root";
-	private $db_pass = "";
+	private $db_pass = "1478963";
 	private $db_name = "falling_worlds_landing";
 	private $con = null;
 
@@ -12,7 +12,7 @@ class database{
 			$this->con ->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
 			$this->con ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}catch(Exception $e){
-			print_r($e);
+			//print_r($e);
 		}
 		return true;
 	}

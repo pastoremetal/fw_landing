@@ -141,6 +141,9 @@
 					if(data.SUCCESS==true){
 						$("#register_success").show();
 						$("#register_progress").hide();
+						window.setTimeout(function(){
+							window.location.href = "/<?=$config->getLanguage()['ab']?>/login";
+						, 1000);
 					}else{
 						$("#register_submit, #register_error").show();
 						$("#register_progress").hide();
@@ -181,7 +184,7 @@
 						$("#contact_success").show();
 						$("#contact_progress").hide();
 						window.setTimeout(function(){
-							window.header.location.href = "/<?=$this->language['ab']?>/form?q=1&u="+data.ID;
+							window.location.href = "/<?=$this->language['ab']?>/form?q=1&u="+data.ID;
 						}, 50);
 					}else{
 						$("#contact_submit, #contact_error").show();

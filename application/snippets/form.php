@@ -1,8 +1,29 @@
 <?php
+	if(!isset($_SESSION['USER']['LOGED']) || $_SESSION['USER']['LOGED']!==true){
+		echo "<script type=\"text/javascript\">location.href = '/{$this->language['ab']}/login';</script>";
+		exit;
+	}
+	if(!isset($_GET['q']) && !isset($_POST['questionnaire_id'])){
+		echo "<script type=\"text/javascript\">location.href = '/{$this->language['ab']}/dashboard';</script>";
+		exit;
+	}
+
+	$qrP = $this->database->getCon()->prepare("SELECT COUNT(id) as TOTAL FROM form_usr_questionnaire WHERE user=:user AND questionnaire=:questionnaire");
+	$qs = (isset($_POST['questionnaire_id']) && $_POST['questionnaire_id']!='')?$_POST['questionnaire_id']:(!isset($_GET['q']))?null:$_GET['q'];
+	$qrP->bindParam(':questionnaire', $qs);
+	$qrP->bindParam(':user', $_SESSION['USER']['USER_ID']);
+	$qrP->execute();
+	$rsP = $qrP->fetchObject();
+	$rpM = null;
+	if($rsP->TOTAL > 0){
+		$rpM = "alert('{$this->textFile['form']['repeated_message']}'); $('#contact').find('input').prop({disabled: true});/* location.href = '/{$this->language['ab']}/dashboard';*/";
+		//exit;
+	}
+
 	$error = false;
-	if(isset($_POST['send']) && $_POST['send']!=''){
+	if(isset($_POST['send']) && $_POST['send']!='' && $rsP->TOTAL==0){
 		if(isset($_POST['questionnaire_id']) &&
-			isset($_POST['user_id'])){
+			isset($_SESSION['USER']['USER_ID'])){
 				$qrU = $this->database->getCon()->prepare("SELECT
 																a.*,
 																b.id as question_id,
@@ -13,14 +34,15 @@
 																	form_question b ON a.question=b.id
 																WHERE
 																	a.questionnaire=:id");
+				$qrU->bindParam(':user', $_SESSION['USER']['USER_ID']);
 				$qrU->bindParam(':id', $_POST['questionnaire_id']);
 				$qrU->execute();
 				$qrR = $qrU->fetchAll();
 
 				$this->database->getCon()->beginTransaction();
 				$qrQI = $this->database->getCon()->prepare("INSERT INTO form_usr_questionnaire (user, questionnaire) VALUES (:user, :questionnaire)");
-				$qrQI->bindParam(':user', $_POST['questionnaire_id']);
-				$qrQI->bindParam(':questionnaire', $_POST['user_id']);
+				//$qrQI->bindParam(':user', $_SESSION['USER']['USER_ID']);
+				$qrQI->bindParam(':questionnaire', $_POST['questionnaire_id']);
 				$qrQI->execute();
 				$uQId = $this->database->getCon()->lastInsertId();
 				$qGroups = array();
@@ -79,8 +101,8 @@
 								Obrigado por colaborar com nossa pesquisa, agora fique atento para novidades sobre o mundo de Falling Worlds!
 								<script>
 									window.setTimeout(function(){
-										window.location.href = '/';
-									}, 500);
+										window.location.href = '/{$this->language['ab']}/dashboard';
+									}, 2000);
 								</script>
 							</div>";
 			}
@@ -92,11 +114,43 @@
 															form_questionnaire a JOIN
 															form_questionnaire_language b ON a.id=b.questionnaire
 														WHERE a.id=:id AND b.language=:lan");
+														//echo $_GET['q']."<br>".$this->language['ab'];exit;
 			$qrQ->bindParam(':id', $_GET['q']);
 			$qrQ->bindParam(':lan', $this->language['ab']);
 			$qrQ->execute();
 			$questionnaire = $qrQ->fetchObject();
 			$qrU = $this->database->getCon()->prepare("SELECT
+															a.*,
+															b.id as question_id,
+															b.label,
+															b.type,
+															b.scale_lengt,
+															d.answer_obj,
+															d.answer_value,
+															d.answer_adj,
+															e.question_text,
+															(
+																CASE
+																	WHEN  b.type = 'OBJ' THEN d.answer_obj
+																	WHEN  b.type = 'SCL' THEN d.answer_value
+																	ELSE d.answer_adj
+																END
+															) as value
+															FROM
+																form_questionnaire_x_question a JOIN
+																form_question b ON a.question=b.id JOIN
+																form_question_language e ON b.id=e.question LEFT JOIN
+																form_usr_questionnaire c ON
+																	a.questionnaire=c.questionnaire AND
+																	c.user=:user LEFT JOIN
+																form_usr_answer d ON
+																	c.id=d.usr_questionnaire AND
+																	a.id=d.question
+															WHERE
+																a.questionnaire=:id AND
+																e.language=:lan");
+
+			/*$qrU = $this->database->getCon()->prepare("SELECT
 															a.*,
 															b.id as question_id,
 															b.label,
@@ -109,7 +163,8 @@
 																form_question_language c ON b.id=c.question
 															WHERE
 																a.questionnaire=:id AND
-																c.language=:lan");
+																c.language=:lan");*/
+			$qrU->bindParam(':user', $_SESSION['USER']['USER_ID']);
 			$qrU->bindParam(':id', $_GET['q']);
 			$qrU->bindParam(':lan', $this->language['ab']);
 			$qrU->execute();
@@ -159,7 +214,7 @@
 			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
 			<form action="" method="post" onsubmit="javascript: return sendForm(this)">
 				<input type="hidden" name="questionnaire_id" value="<?=$_GET['q']?>" />
-				<input type="hidden" name="user_id" value="<?=$_GET['u']?>" />
+
 				<div class="carousel-inner">
 					<?php
 						$g = 0;
@@ -170,16 +225,19 @@
 													<h6 class='title'>{$question[0]->question_text}</h6>
 													<div class='w-100 d-block'>";
 														if($question[0]->type == "OBJ")
-															foreach($question[1] as $ans)
+															foreach($question[1] as $ans){
+																$ck = ($question[0]->value==$ans['id'])?"checked='checked'":"";
 																echo "<div class='form-check form-check-inline col-xs-12 col-sm-6 col-md-4'>
-  																			<input class='form-check-input' data-group='{$g}' type='radio' name='question[{$question[0]->question_id}]' id='question[{$question[0]->question_id}][{$ans['id']}]' value='{$ans['id']}' />
+  																			<input class='form-check-input' data-group='{$g}' {$ck} type='radio' name='question[{$question[0]->question_id}]' id='question[{$question[0]->question_id}][{$ans['id']}]' value='{$ans['id']}' />
 																				<label class='form-check-label' for='question[{$question[0]->question_id}][{$ans['id']}]'>{$ans['answer_text']}</label>
 																			</div>";
+															}
 														elseif($question[0]->type == "SCL"){
 															$sh = $sb = "";
 															for($i=0; $i<$question[0]->scale_lengt; $i++){
+																$ck = ($question[0]->value==$i)?"checked='checked'":"";
 																$sh .= "<th><label class='w-100 form-check-label' for='question[{$question[0]->question_id}][{$i}]'>{$i}</label></th>";
-																$sb .= "<td><input class='' type='radio' data-group='{$g}' name='question[{$question[0]->question_id}]' id='question[{$question[0]->question_id}][{$i}]' value='{$i}' /></td>";
+																$sb .= "<td><input class='' type='radio' {$ck} data-group='{$g}' name='question[{$question[0]->question_id}]' id='question[{$question[0]->question_id}][{$i}]' value='{$i}' /></td>";
 															}
 															echo "<small>{$this->textFile['form']['scl_description']}</small>
 																		<table class='scale table'>
@@ -217,6 +275,7 @@
 	</div>
 </div>
 <script>
+	<?=$rpM?>
 	$("#form_alert").hide();
 	function sendForm(form){
 		let ckd = {};

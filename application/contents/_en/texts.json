@@ -4,6 +4,7 @@
 		"about": "About",
 		"contact": "Contact",
 		"signin": "Sign in",
+		"signout": "Sign out",
 		"register": "Register"
 
 	},
@@ -29,7 +30,7 @@
 			"send": "Save",
 			"form_help": "Your information will never be shared with third parties.",
 			"receive_newsletter": "Receive our newsletter",
-			"success_message": "Registration done successfully.",
+			"success_message": "Registration done successfully, please signin to go to your dashboard.",
 			"error_message": "Featured fields need to be reviewed."
 		}
 	},
@@ -49,16 +50,25 @@
 		}
 	},
 	"form": {
-		"scl_description": "",
+		"scl_description": "Mark in the scale below how much you agree with this statement, where 0 means totally disagree and 8 fully agree.",
 		"error_title": "Some fields are blank!",
 		"error_description": "Please fill the highlited fields and submit the form again.",
 		"error_ukn_title": "Something went wrong.",
 		"error_ukn_description": "The development team was contacted, please wait for the response and come back later.",
 		"prev": "Previous",
-		"next": "Next"
+		"next": "Next",
+		"repeated_message": "Thanks for the collaboration. \\n You have already completed this survey before."
 	},
 	"login": {
 		"user": "Username",
-		"password": "Password"
+		"password": "Password",
+		"login_error": "Wrong username or password."
+	},
+	"dashboard": {
+		"welcometitle": "Welcome to the world of Falling Worlds!",
+		"welcometext1": "We are very gratefull for your inscription, soon we will launch the Open Beta and we are counting with your presence. <br/>",
+		"welcometext2": "Falling Worlds is an academic project and besides having fun, it has the intuition to answer some questions about the behavior of its players (do not worry, no information about you will be shared or published).",
+		"welcometext3": "For now, we strongly urge you to fill out our survey (it does not take more than 5 minutes) and share it with as many people as possible.",
+		"fillform": "Fill our survey"
 	}
 }

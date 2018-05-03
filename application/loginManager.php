@@ -13,15 +13,22 @@
     			$qr->bindParam(":user", $username);
     			$qr->bindParam(":pass", $pass);
     			$qr->execute();
-          var_dump($qr->fetchObject());
-          echo "ok";
-    			return true;
+          $r = $qr->fetchObject();
+          if($r != false){
+            $_SESSION['USER'] = array('USER_ID'=>$r->id, 'USERNAME'=>$username, 'LOGED'=>true, 'LOGIN_TIME'=>date('Y-m-d'));
+            return true;
+          }else{
+            return false;
+          }
     		}catch(Exception $e){
-          print_r($e);
-          echo "no";
     			return false;
     		}
       }
+    }
+
+    public function doLogout(){
+      unset($_SESSION['USER']);
+      return true;
     }
   }
 

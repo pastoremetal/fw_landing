@@ -118,3 +118,5 @@ body{background: #000;}
 .question-group > .question table.scale th:nth-child(even){
 	background: rgba(120, 100, 80, 0.4);
 }
+
+input:disabled, input:disabled ~ label{color: #EEE !important;}

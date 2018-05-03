@@ -35,6 +35,7 @@ class registerSend{
 			$qr->bindParam(":senha", $pass);
 			$qr->execute();
 
+			$mail = new PHPMailer(true);
 			$mail->CharSet = 'UTF-8';
 			$mail->SMTPDebug = 0;
 			$mail->isSMTP();
@@ -47,22 +48,14 @@ class registerSend{
 			$mail->setFrom('contato@fallingworlds.fun', 'Equipe Falling Worlds');
 			$mail->addAddress($_POST['register_email']);
 			$mail->isHTML(true);
-			$mail->Subject = 'Nova mensagem recebida no site';
-			$mail->Body = "<html>
-							<head>
-								<meta charset=\"utf-8\">
-							</head>
-							<body>
-								Uma nova mensagem foi recebida pelo site.<br/>
-								<strong>Nome:</strong> {$_POST['contact_firstname']}<br/>
-								<strong>Sobrenome:</strong> {$_POST['contact_lastname']}<br/>
-								<strong>E-mail:</strong> {$_POST['contact_email']}<br/>
-								<strong>País:</strong> {$_POST['contact_country']}<br/>
-								<strong>Idioma:</strong> {$_POST['contact_country']}<br/>
-								<strong>Newsletter:</strong> {$_POST['contact_newsletter']}<br/>
-								<strong>Mensagem:</strong> {$_POST['language']}<br/>
-							</body>";
+			$mail->Subject = 'Falling Worlds';
 
+			if(is_file("contents/_{$_POST['language']}/email_register.html"))
+				$emailFile = file_get_contents("contents/_{$_POST['language']}/email_register.html");
+			else
+				$emailFile = "contents/_en/email_register.html";
+
+			$mail->Body = $emailFile;
 			$mail->send();
 
 			echo json_encode(array("SUCCESS"=>true, "ID"=>$this->db->getCon()->lastInsertId()));

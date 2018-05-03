@@ -1,17 +1,24 @@
 <?php
-	//require 'database.php';
-	//echo getcwd();exit;
 	require 'application/loginManager.php';
 	$login = new loginManager($this->database);
-
+	$err = null;
 	if(isset($_POST['user'])!='' && isset($_POST['password'])!='' && $_POST['user']!='' && $_POST['password']!=''){
-		$login->doLogin($_POST['user'], $_POST['password']);
+		if($login->doLogin($_POST['user'], $_POST['password'])===true)
+			$err = null;
+		else
+			$err = "wrong";
+	}
+
+	if(isset($_GET['logout']) && $_GET['logout']==true){
+		$login->doLogout();
+		echo "<script>window.location.href = \"/{$this->language['ab']}/login\";</script>";
 	}
 ?>
 
 <div class="col-10" style="padding-right: 0"></div>
-<div class="col-6 offset-3">
-	<form action="" method="post">
+<div class="col-6 offset-3" style="padding: 30px">
+	<div id="login_error" class="alert alert-danger w-100" style="display: none" role="alert"><?=$this->textFile['login']['login_error']?></div>
+	<form action="" method="post" autocomplete="off">
 		<div class="row">
 			<div class="form-group col col-xs-12">
 				<label for="user"><?=$this->textFile['login']['user']?></label>
@@ -31,3 +38,9 @@
 		</div>
 	</form>
 </div>
+<script>
+	if('<?=$err?>'=='wrong')
+		$('#login_error').show();
+	else if(<?php echo (isset($_SESSION['USER']['LOGED']) && $_SESSION['USER']['LOGED']===true)?'true':'false' ?>)
+		window.location.href = "/<?=$this->language['ab']?>/dashboard";
+</script>

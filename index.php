@@ -1,7 +1,7 @@
 <?php
+session_start(array('name'=>'fw_landing', 'gc_maxlifetime'=>20));
 include "application/config.php";
 $config = new config();
-//$texts = $config->snippeter->getTexts();
 ?>
 
 <!doctype html>
@@ -47,12 +47,19 @@ $config = new config();
 				</a>
 			</div>
 			<div class="col text-right">
-				<a href="/<?=$config->getLanguage()['ab']?>/login">
-					<button class="btn btn-sm btn-light" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['signin']?></button>
-				</a>
-				<a href="javascript: void(0);" onclick="goToRegister()">
-					<button class="btn btn-sm btn-success" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['register']?></button>
-				</a>
+				<?php
+					if(!isset($_SESSION['USER']['LOGED']) || $_SESSION['USER']['LOGED']===false){?>
+						<a href="/<?=$config->getLanguage()['ab']?>/login">
+							<button class="btn btn-sm btn-light" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['signin']?></button>
+						</a>
+						<a href="javascript: void(0);" onclick="goToRegister()">
+							<button class="btn btn-sm btn-success" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['register']?></button>
+						</a>
+				<?php }else{?>
+						<a href="/<?=$config->getLanguage()['ab']?>/login?logout=true">
+							<button class="btn btn-sm btn-success" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['signout']?></button>
+						</a>
+				<?php }?>
 			</div>
 		</nav>
 
@@ -116,8 +123,10 @@ $config = new config();
 </html>
 <script>
 	function goToRegister(){
-		console.log('ok');
-		$("a#nav-profile-tab").tab('show');
+		if('<?=$config->getController()?>'!='main'){
+			location.href = '/<?=$config->getLanguage()['ab']?>';
+		}else
+			$("a#nav-profile-tab").tab('show');
 		return false;
 	}
 </script>
