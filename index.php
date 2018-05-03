@@ -38,7 +38,7 @@ $config = new config();
 					</li>
 				</ul>
 			</div>-->
-			<div class="col-xs-12 col-md-6 text-left">
+			<div class="col-12 col-md-6 text-left">
 				<a href="/pt/<?=$config->getController()?>">
 					<button class="btn btn-sm btn-info" style="font-weight: bold" type="button">PT</button>
 				</a>
@@ -46,7 +46,7 @@ $config = new config();
 					<button class="btn btn-sm btn-info" style="font-weight: bold" type="button">EN</button>
 				</a>
 			</div>
-			<div class="col-xs-12 col-md-6 md-text-right">
+			<div class="col-6 col-md-6 md-text-right">
 				<?php
 					if(!isset($_SESSION['USER']['LOGED']) || $_SESSION['USER']['LOGED']===false){?>
 						<a href="/<?=$config->getLanguage()['ab']?>/login">
@@ -71,7 +71,7 @@ $config = new config();
 			</video>
 		</div>
 
-		<div class="container" style="top: 50px; padding-bottom: 40px; position: relative;">
+		<div class="container" style="top: 95px; padding-bottom: 40px; position: relative;">
 			<!--
 			<div class="row content" id="beginning" style="margin-top: 60px; background: rgba(200, 200, 200, 0.8)">
 				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist-beginning" aria-orientation="vertical">

@@ -28,12 +28,14 @@ body{background: #000;}
 	.fullscreen-bg__video {width: 300%; left: -100%;}
 }
 
-@media (min-width: 768px) { 
-	.md-text-right{text-align: right}
-}
+
 @media (max-width: 767px) {
 	.fullscreen-bg {background: url('application/contents/images/back.jpg') center center / cover no-repeat;}
 	.fullscreen-bg__video {display: none;}
+		
+}
+
+@media (min-width: 768px) { 
 	.nav-pills .nav-link {
 		-webkit-border-top-left-radius: 8px;
 		-webkit-border-bottom-left-radius: 8px;
@@ -47,7 +49,9 @@ body{background: #000;}
 		-moz-border-radius-bottomright: 0;
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
-	}	
+	}
+	.md-text-right{text-align: right}
+	.md-mg-top-10{margin-top: 10px;}
 }
 
 .nav-pills .nav-link {	
