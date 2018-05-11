@@ -50,8 +50,8 @@ $config = new config();
 				<?php
 					if(!isset($_SESSION['USER']['LOGED']) || $_SESSION['USER']['LOGED']===false){?>
 						<a href="/<?=$config->getLanguage()['ab']?>/login">
+							<button class="btn btn-sm btn-light col-4 offset-1 col-md-2 offset-md-0" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['signin']?></button>
 						</a>
-						<button class="btn btn-sm btn-light col-4 offset-1 col-md-2 offset-md-0" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['signin']?></button>
 						<a href="javascript: void(0);" onclick="goToRegister()">
 							<button class="btn btn-sm btn-success col-4 col-md-2" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['register']?></button>
 						</a>
