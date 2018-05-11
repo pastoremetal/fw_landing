@@ -97,13 +97,13 @@
 				<div class="form-group col-12">
 					<textarea class="form-control required" name="contact_message" id="contact_message" placeholder="<?=$this->textFile['contact']['contact_form']['message']?>"></textarea>
 				</div>
-				<div class="form-group col-6">
+				<div class="form-group col-12 col-md-6">
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox" name="contact_newsletter" id="contact_newsletter" value="1" checked="checked">
 						<label class="form-check-label" for="contact_newsletter"><?=$this->textFile['contact']['contact_form']['receive_newsletter']?></label>
 					</div>
 				</div>
-				<div class="form-group col-6 text-right">
+				<div class="form-group col-12 col-md-6 text-right">
 					<div class="g-recaptcha" style="display: inline-block" data-sitekey="6LezYlMUAAAAAL67TV34-fARTG-yenvDpSyGje_D"></div>
 				</div>
 				<div class="form-group col-12 text-right">
