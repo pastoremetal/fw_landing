@@ -95,7 +95,7 @@ class contactSend{
 			$qr->bindParam(":email", $email);
 			$qr->bindParam(":idioma", $idioma);
 			$qr->execute();
-		}catch(Exception $e){
+		}catch(PDOException $e){
 			return true;
 		}
 	}
