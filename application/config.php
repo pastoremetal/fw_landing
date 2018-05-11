@@ -15,7 +15,7 @@ class config{
 
 	public function __construct(){
 		$uri = (isset($_SERVER['REDIRECT_URL']))?explode("/", $_SERVER['REDIRECT_URL']):array(1=>$this->default_language, 2=>$this->default_snippet);
-		$uri[1] = (!isset($uri[1]) || strlen($uri[1]!=2))?$_SESSION['language']:$uri[1];
+		$uri[1] = (!isset($uri[1]))?$_SESSION['language']:$uri[1];
 		$uri[2] = (!isset($uri[2]))?$this->default_snippet:$uri[2];
 		$lan = $uri[1];
 		if($lan===null || !array_key_exists($lan, $this->languages))
