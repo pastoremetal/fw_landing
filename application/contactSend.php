@@ -1,4 +1,5 @@
 <?php
+session_start(array('name'=>'fw_landing', 'gc_maxlifetime'=>20));
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
