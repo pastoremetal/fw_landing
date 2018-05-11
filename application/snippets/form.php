@@ -197,8 +197,8 @@
 		}
 ?>
 
-<div class="col-10" style="padding-right: 0"></div>
-<div class="col-10 offset-1" style="">
+<div class="col-md-10" style="padding-right: 0"></div>
+<div class="col-12 col-md-10 offset-md-1" style="">
 	<div class="row">
 		<div class="col-12">
 			<h1 style="font-family: '1942 report';"><?=$questionnaire->title?></h1>
@@ -236,8 +236,8 @@
 															$sh = $sb = "";
 															for($i=0; $i<$question[0]->scale_lengt; $i++){
 																$ck = ($question[0]->value !== null && $question[0]->value==$i)?"checked='checked'":"";
-																$sh .= "<th><label class='w-100 form-check-label' for='question[{$question[0]->question_id}][{$i}]'>{$i}</label></th>";
-																$sb .= "<td><input class='' type='radio' {$ck} data-group='{$g}' name='question[{$question[0]->question_id}]' id='question[{$question[0]->question_id}][{$i}]' value='{$i}' /></td>";
+																$sh .= "<th class='xs-pd-0'><label class='w-100 form-check-label' for='question[{$question[0]->question_id}][{$i}]'>{$i}</label></th>";
+																$sb .= "<td class='xs-pd-0'><input class='' type='radio' {$ck} data-group='{$g}' name='question[{$question[0]->question_id}]' id='question[{$question[0]->question_id}][{$i}]' value='{$i}' /></td>";
 															}
 															echo "<small>{$this->textFile['form']['scl_description']}</small>
 																		<table class='scale table'>

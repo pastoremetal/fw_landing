@@ -40,7 +40,7 @@ $config = new config();
 			</div>-->
 			<div class="col-12 col-md-6 text-left">
 				<a href="/pt/<?=$config->getController()?>">
-					<button class="btn btn-sm btn-info col-4 col-md-2" style="font-weight: bold" type="button">PT</button>
+					<button class="btn btn-sm btn-info col-4 offset-1 col-md-2 offset-md-0" style="font-weight: bold" type="button">PT</button>
 				</a>
 				<a href="/en/<?=$config->getController()?>">
 					<button class="btn btn-sm btn-info col-4 col-md-2" style="font-weight: bold" type="button">EN</button>
@@ -50,14 +50,14 @@ $config = new config();
 				<?php
 					if(!isset($_SESSION['USER']['LOGED']) || $_SESSION['USER']['LOGED']===false){?>
 						<a href="/<?=$config->getLanguage()['ab']?>/login">
-							<button class="btn btn-sm btn-light col-4 col-md-2" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['signin']?></button>
 						</a>
+						<button class="btn btn-sm btn-light col-4 offset-1 col-md-2 offset-md-0" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['signin']?></button>
 						<a href="javascript: void(0);" onclick="goToRegister()">
 							<button class="btn btn-sm btn-success col-4 col-md-2" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['register']?></button>
 						</a>
 				<?php }else{?>
 						<a href="/<?=$config->getLanguage()['ab']?>/login?logout=true">
-							<button class="btn btn-sm btn-success col-4 col-md-2" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['signout']?></button>
+							<button class="btn btn-sm btn-success col-4  offset-1 col-md-2 offset-md-0" style="font-weight: bold" type="button"><?=$config->snippeter->getTexts()['menu']['signout']?></button>
 						</a>
 				<?php }?>
 			</div>

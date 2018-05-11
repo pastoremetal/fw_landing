@@ -33,10 +33,11 @@ body{background: #000;}
 	.fullscreen-bg {background: url('application/contents/images/back.jpg') center center / cover no-repeat;}
 	.fullscreen-bg__video {display: none;}
 	.xs-mg-top-10{margin-top: 10px;}
-	.xs-pd-left-0{padding-left: 0 !important;}	
+	.xs-pd-left-0{padding-left: 0 !important;}
+	.xs-pd-0{padding: 0 !important;}
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
 	.nav-pills .nav-link {
 		-webkit-border-top-left-radius: 8px;
 		-webkit-border-bottom-left-radius: 8px;
@@ -56,7 +57,7 @@ body{background: #000;}
 	.md-pd-right-0{padding-right: 0 !important;}
 }
 
-.nav-pills .nav-link {	
+.nav-pills .nav-link {
 	background: rgba(30, 20, 20, 0.8);
 	font-family: '1942 report';
 	color: #DDDDDD;

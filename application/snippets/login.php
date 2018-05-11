@@ -16,7 +16,7 @@
 ?>
 
 <div class="col-10" style="padding-right: 0"></div>
-<div class="col-6 offset-3" style="padding: 30px">
+<div class="col-12 col-md-6 offset-md-3" style="padding: 30px">
 	<div id="login_error" class="alert alert-danger w-100" style="display: none" role="alert"><?=$this->textFile['login']['login_error']?></div>
 	<form action="" method="post" autocomplete="off">
 		<div class="row">
