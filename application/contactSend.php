@@ -96,7 +96,7 @@ class contactSend{
 			$qr->bindParam(":idioma", $idioma);
 			$qr->execute();
 		}catch(Exception $e){
-			return $e;
+			return true;
 		}
 	}
 }
