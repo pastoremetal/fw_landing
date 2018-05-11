@@ -75,7 +75,7 @@ class contactSend{
 								<strong>País:</strong> {$_POST['contact_country']}<br/>
 								<strong>Idioma:</strong> {$_POST['contact_country']}<br/>
 								<strong>Newsletter:</strong> {$_POST['contact_newsletter']}<br/>
-								<strong>Mensagem:</strong> {$_POST['language']}<br/>
+								<strong>Mensagem:</strong> {$_POST['contact_message']}<br/>
 							</body>";
 
 			$mail->send();
