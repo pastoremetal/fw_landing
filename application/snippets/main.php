@@ -14,7 +14,7 @@
 		<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 			<div class="row" style="padding: 30px 0;">
 				<div class="col">
-					<h1 style="font-family: '1942 report';">Falling Worlds</h1>
+					<h1 style="font-family: '1942 report';">Falling Worlds<!--<?=$_SESSION['language']?>--></h1>
 					<p style="font-size: 1.2rem"><?=$this->textFile['about']['welcometext']?></p>
 				</div>
 			</div>
