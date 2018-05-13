@@ -10,9 +10,10 @@
 	}
 
 	if(isset($_POST['user'])!='' && $_POST['user']!='' && $_POST['forget_pass']==true){
-		$login->requestNewPass($_POST['user']);
-		//echo $_POST['user']." ".$_POST['forget_pass'];exit;
-		exit;
+		if($login->requestNewPass($_POST['user']))
+			echo "<script>alert('{$this->textFile['login']['req_pass']}');window.location.href = \"/{$this->language['ab']}/login\";</script>";
+		else
+			echo "<script>alert('{$this->textFile['login']['req_pass_error']}');window.location.href = \"/{$this->language['ab']}/login\";</script>";
 	}
 
 	if(isset($_GET['logout']) && $_GET['logout']==true){

@@ -63,7 +63,9 @@
 		"password": "Senha",
 		"login_error": "Usuário ou senha incorreto.",
 		"forgot_password": "Esqueci minha senha",
-		"mail_error": "Por favor preencha com seu e-mail."
+		"mail_error": "Por favor preencha com seu e-mail.",
+		"req_pass": "Uma mensagem com instruções para recuperar sua senha foi enviada para seu e-mail, por favore verifique sua caixa de entrada.",
+		"req_pass_error": "Ocorreu algum erro, por favor verifique seu usuário ou e-mail e tente novamente."
 	},
 	"dashboard": {
 		"welcometitle": "Welcome to the world of Falling Worlds!",
@@ -71,5 +73,14 @@
 		"welcometext2": "Falling Worlds é um projeto acadêmico e além de divertir, tem o intuido de responder algumas questões sobre o comportamento de seus jogadores (não se preocupe, nenhuma informação sobre você será compartilhada ou publicada).",
 		"welcometext3": "Por hora, pedimos encarecidamente que você preencha nosso questionário (não leva nem 5 minutos) e compartilhe com o máximo de pessoas possível.",
 		"fillform": "Preencha nosso formulário"
+	},
+	"forget_pass": {
+		"hello": "Olá",
+		"fill_new_pass": "Sua nova senha",
+		"confirm_new_pass": "Confirme sua nova senha",
+		"err_void": "Todos os campos devem se preenchidos." ,
+		"err_unlike": "As senhas devem ser identicas.",
+		"redefine_pass": "Redefinir senha",
+		"conclude": "Senha redefinida com sucesso!"
 	}
 }

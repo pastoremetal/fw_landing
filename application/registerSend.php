@@ -53,7 +53,7 @@ class registerSend{
 			if(is_file("contents/_{$_POST['language']}/email_register.html"))
 				$emailFile = file_get_contents("contents/_{$_POST['language']}/email_register.html");
 			else
-				$emailFile = "contents/_en/email_register.html";
+				$emailFile = file_get_contents("contents/_en/email_register.html");
 
 			$mail->Body = $emailFile;
 			$mail->send();

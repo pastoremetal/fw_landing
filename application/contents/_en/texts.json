@@ -64,7 +64,9 @@
 		"password": "Password",
 		"login_error": "Wrong username or password.",
 		"forgot_password": "Forgot my password",
-		"mail_error": "Please fill in with your e-mail."
+		"mail_error": "Please fill in with your e-mail.",
+		"req_pass": "A message with instructions to recover your password has been sent to your e-mail, please print your inbox.",
+		"req_pass_error": "An error has occurred, please check your username or e-mail and try again."
 	},
 	"dashboard": {
 		"welcometitle": "Welcome to the world of Falling Worlds!",
@@ -72,5 +74,14 @@
 		"welcometext2": "Falling Worlds is an academic project and besides having fun, it has the intuition to answer some questions about the behavior of its players (do not worry, no information about you will be shared or published).",
 		"welcometext3": "For now, we strongly urge you to fill out our survey (it does not take more than 5 minutes) and share it with as many people as possible.",
 		"fillform": "Fill our survey"
+	},
+	"forget_pass": {
+		"hello": "Hello",
+		"fill_new_pass": "Your new password",
+		"confirm_new_pass": "Confirm your new password",
+		"err_void": "All fields must be filled." ,
+		"err_unlike": "Passwords must be identical.",
+		"redefine_pass": "Redefine password",
+		"conclude": "Password successfully changed!"
 	}
 }
