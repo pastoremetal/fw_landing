@@ -1,4 +1,5 @@
 <?php
+session_start(array('name'=>'fw_landing', 'gc_maxlifetime'=>20));
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -11,7 +12,7 @@ class contactSend{
 	public function __construct(){
 		$this->db = new database();
 	}
-	
+
 	public function sendMessage(){
 		$mail = new PHPMailer(true);
 		preg_replace("/[^a-z \']/i", "", $_POST['contact_firstname']);
@@ -21,16 +22,16 @@ class contactSend{
 		preg_replace("/[^0-9]/i", "", $_POST['contact_newsletter']);
 		$_POST['contact_message'] = htmlentities($_POST['contact_message']);
 		$_POST['language'] = preg_replace("/[^a-z \']/i", "", $_POST['language']);
-		
-		if($_POST['contact_firstname']=='' || 
-			$_POST['contact_firstname']=='' || 
+
+		if($_POST['contact_firstname']=='' ||
+			$_POST['contact_firstname']=='' ||
 			$_POST['contact_country']=='' ||
 			$_POST['contact_message']=='' |
 			$_POST['contact_email']=='' ||
 			$_POST['g-recaptcha-response']==''){
 				echo json_encode(array("SUCCESS"=>false)); exit;
 		}
-		
+
 		$params = array('secret'=>'6LezYlMUAAAAAP2VKKv5cf1vcpWVdcE4gmfCN2PQ', 'response'=>$_POST['g-recaptcha-response']);
 		$defaults = array(
 			CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
@@ -44,10 +45,10 @@ class contactSend{
 		if($ret['success']==false){
 			echo json_encode(array("SUCCESS"=>false));exit;
 		}
-		
+
 		if($_POST['contact_newsletter']==1)
 			$this->cadNewsletter($_POST['contact_firstname'], $_POST['contact_lastname'], $_POST['contact_email'], $_POST['contact_country']);
-		
+
 		try {
 			//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
 			$mail->CharSet = 'UTF-8';
@@ -73,9 +74,9 @@ class contactSend{
 								<strong>Sobrenome:</strong> {$_POST['contact_lastname']}<br/>
 								<strong>E-mail:</strong> {$_POST['contact_email']}<br/>
 								<strong>País:</strong> {$_POST['contact_country']}<br/>
-								<strong>Idioma:</strong> {$_POST['contact_country']}<br/>
+								<strong>Idioma:</strong> {$_SESSION['language']}<br/>
 								<strong>Newsletter:</strong> {$_POST['contact_newsletter']}<br/>
-								<strong>Mensagem:</strong> {$_POST['language']}<br/>
+								<strong>Mensagem:</strong> {$_POST['contact_message']}<br/>
 							</body>";
 
 			$mail->send();
@@ -83,21 +84,25 @@ class contactSend{
 		} catch (Exception $e) {
 			echo json_encode(array("SUCCESS"=>false));
 		}
-		
-		
+
+
 	}
-	
+
 	public function cadNewsletter($nome, $sobrenome, $email, $idioma){
-		$qr = $this->db->getCon()->prepare("INSERT INTO newsletter_inscription (nome, sobrenome, email, idioma) VALUES (:nome, :sobrenome, :email, :idioma)");
-		$qr->bindParam(":nome", $nome);
-		$qr->bindParam(":sobrenome", $sobrenome);
-		$qr->bindParam(":email", $email);
-		$qr->bindParam(":idioma", $idioma);
-		$qr->execute();
+		try{
+			$qr = $this->db->getCon()->prepare("INSERT INTO newsletter_inscription (nome, sobrenome, email, idioma) VALUES (:nome, :sobrenome, :email, :idioma)");
+			$qr->bindParam(":nome", $nome);
+			$qr->bindParam(":sobrenome", $sobrenome);
+			$qr->bindParam(":email", $email);
+			$qr->bindParam(":idioma", $idioma);
+			$qr->execute();
+		}catch(PDOException $e){
+			return true;
+		}
 	}
 }
 
-$contactSend = new contactSend();	
+$contactSend = new contactSend();
 switch($_GET['f']){
 	case 'sendMsg':
 		$contactSend->sendMessage();
