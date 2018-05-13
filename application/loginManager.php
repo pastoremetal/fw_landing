@@ -108,7 +108,7 @@
     public function resetPassword($usrId, $hs, $password){
       if($usrId !="" && $hs != "" && $password != ""){
         try{
-    			$qr = $this->db->getCon()->prepare("UPDATE pre_inscription SET senha=:password WHERE id=:id AND forgetpass_hash=:hs");
+    			$qr = $this->db->getCon()->prepare("UPDATE pre_inscription SET senha=:password, forgetpass_hash=NULL WHERE id=:id AND forgetpass_hash=:hs");
     			$pass = hash('sha256', $password);
           $qr->bindParam(":id", $usrId);
           $qr->bindParam(":hs", $hs);
