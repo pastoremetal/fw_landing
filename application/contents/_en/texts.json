@@ -60,9 +60,11 @@
 		"repeated_message": "Thanks for the collaboration. \\n You have already completed this survey before."
 	},
 	"login": {
-		"user": "Username",
+		"user": "E-mail / Username",
 		"password": "Password",
-		"login_error": "Wrong username or password."
+		"login_error": "Wrong username or password.",
+		"forgot_password": "Forgot my password",
+		"mail_error": "Please fill in with your e-mail."
 	},
 	"dashboard": {
 		"welcometitle": "Welcome to the world of Falling Worlds!",

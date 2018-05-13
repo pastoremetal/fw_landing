@@ -9,6 +9,12 @@
 			$err = "wrong";
 	}
 
+	if(isset($_POST['user'])!='' && $_POST['user']!='' && $_POST['forget_pass']==true){
+		$login->requestNewPass($_POST['user']);
+		//echo $_POST['user']." ".$_POST['forget_pass'];exit;
+		exit;
+	}
+
 	if(isset($_GET['logout']) && $_GET['logout']==true){
 		$login->doLogout();
 		echo "<script>window.location.href = \"/{$this->language['ab']}/login\";</script>";
@@ -18,7 +24,9 @@
 <div class="col-10" style="padding-right: 0"></div>
 <div class="col-12 col-md-6 offset-md-3" style="padding: 30px">
 	<div id="login_error" class="alert alert-danger w-100" style="display: none" role="alert"><?=$this->textFile['login']['login_error']?></div>
-	<form action="" method="post" autocomplete="off">
+	<div id="mail_error" class="alert alert-danger w-100" style="display: none" role="alert"><?=$this->textFile['login']['mail_error']?></div>
+	<form action="" method="post" autocomplete="off" id="loginForm">
+		<input type="hidden" name="forget_pass" id="forget_pass" value="" />
 		<div class="row">
 			<div class="form-group col col-xs-12">
 				<label for="user"><?=$this->textFile['login']['user']?></label>
@@ -35,10 +43,25 @@
 			<div class="form-group col col-xs-12 col-md-4">
 				<input class='btn btn-success w-100' style='font-weight: bold' type='submit' name='send' value='Entrar'>
 			</div>
+		<!--</div>
+		<div class="row">-->
+			<div class="col-12 col-md-4 offset-md-4 text-right" style="line-height: 2">
+				<a class="text-info" href="#" onclick="forgetPass()"><?=$this->textFile['login']['forgot_password']?></a>
+			</div>
 		</div>
 	</form>
 </div>
 <script>
+	function forgetPass(){
+		let usrInput = $("input#user");
+		if(usrInput.val()!=undefined && usrInput.val()!=''){
+			$("input#forget_pass").val("true");
+			$("#loginForm").submit();
+		}else{
+			$("#mail_error").show();
+		}
+	}
+
 	if('<?=$err?>'=='wrong')
 		$('#login_error').show();
 	else if(<?php echo (isset($_SESSION['USER']['LOGED']) && $_SESSION['USER']['LOGED']===true)?'true':'false' ?>)

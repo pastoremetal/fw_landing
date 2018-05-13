@@ -59,15 +59,17 @@
 		"repeated_message": "Obrigado pela colaboração.\\n Você já havia preenchido esse formulário antes."
 	},
 	"login": {
-		"user": "Usuário",
+		"user": "E-mail / Usuário",
 		"password": "Senha",
-		"login_error": "Usuário ou senha incorreto."
+		"login_error": "Usuário ou senha incorreto.",
+		"forgot_password": "Esqueci minha senha",
+		"mail_error": "Por favor preencha com seu e-mail."
 	},
 	"dashboard": {
 		"welcometitle": "Welcome to the world of Falling Worlds!",
 		"welcometext1": "Somos muito gratos por sua inscrição, em breve lançaremos a Open Beta e contamos com sua presença.",
 		"welcometext2": "Falling Worlds é um projeto acadêmico e além de divertir, tem o intuido de responder algumas questões sobre o comportamento de seus jogadores (não se preocupe, nenhuma informação sobre você será compartilhada ou publicada).",
-		"welcometext3": "Por hora, pedimos encarecidamente que você preencha nosso questionário (não leva nem 5 minuto) e compartilhe com o máximo de pessoas possível.",
+		"welcometext3": "Por hora, pedimos encarecidamente que você preencha nosso questionário (não leva nem 5 minutos) e compartilhe com o máximo de pessoas possível.",
 		"fillform": "Preencha nosso formulário"
 	}
 }
