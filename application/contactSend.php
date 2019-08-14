@@ -57,7 +57,7 @@ class contactSend{
 			$mail->Host = 'smtp.sendgrid.net';
 			$mail->SMTPAuth = true;
 			$mail->Username = 'apikey';
-			$mail->Password = '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';
+			$mail->Password = '<sendgridKey>';
 			$mail->SMTPSecure = 'tls';
 			$mail->Port = 587;
 			$mail->setFrom('contato@fallingworlds.fun', 'Equipe Falling Worlds');
